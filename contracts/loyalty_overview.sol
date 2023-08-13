@@ -77,6 +77,11 @@ contract loyalty_overview {
 		businesses[_bAd].lt.mint(flipkartAccount, 10000);//transfers token into the 
 		// account of flipkart !! 
 
+		//return address(_newcon);
+	}
+
+	function getBusinessCoin(address _bAd) public view returns(address){
+		return address(businesses[_bAd].lt);
 	}
 
 	    /**
