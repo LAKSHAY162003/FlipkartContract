@@ -19,7 +19,7 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const infuraKey = "ad9cad8dc5564c1cac9f7f6a30d5de04";
+const INFURA_API_KEY = "https://sepolia.infura.io/v3/ad9cad8dc5564c1cac9f7f6a30d5de04";
 
 const mnemonic = "easily mystery eternal like task garden mind winner aim position photo divide";
 
@@ -71,18 +71,10 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     sepolia: {
-      provider: () => new HDWalletProvider({
-        mnemonic: {
-          phrase: "easily mystery eternal like task garden mind winner aim position photo divide"
-        },
-        providerOrUrl: "https://sepolia.infura.io/v3/ad9cad8dc5564c1cac9f7f6a30d5de04"
-      }),
-      network_id: 10001, // Sepolia's network ID
-      gas: 4000000, // Set a reasonable gas limit
-      gasPrice: 10000000000, // Set a gas price of 10 Gwei
-      confirmations: 2,
-      timeoutBlocks: 200,
-      skipDryRun: true
+      provider: () => new HDWalletProvider(mnemonic, INFURA_API_KEY),
+      network_id: "11155111",
+      gas: 4465030,
+      timeout:800
     },
 
     // Useful for private networks

@@ -74,7 +74,7 @@ contract loyalty_overview {
 		}
 		loyalty_points _newcon = new loyalty_points(_bAd, _bName, _symbol, _decimal); //creates new crypto-token
 		businesses[_bAd]=Business(_bAd, _bName , _email, true, _newcon,uint256(10000));//creates new business
-		businesses[_bAd].lt.mint(flipkartAccount, 20000);//transfers token into the 
+		businesses[_bAd].lt.mint(flipkartAccount, 20*(10**18));//transfers token into the 
 		// account of flipkart !! 
 
 		//return address(_newcon);
