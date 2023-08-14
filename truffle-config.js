@@ -19,9 +19,9 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const INFURA_API_KEY = "https://sepolia.infura.io/v3/ad9cad8dc5564c1cac9f7f6a30d5de04";
+const INFURA_API_KEY = "https://sepolia.infura.io/v3/74105b43c4b34cd2b38fd99a1f315748";
 
-const mnemonic = "easily mystery eternal like task garden mind winner aim position photo divide";
+const mnemonic = "when various mask cool practice version spot mobile point ball space apology";
 
 module.exports = {
   /**
