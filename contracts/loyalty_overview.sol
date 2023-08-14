@@ -67,14 +67,14 @@ contract loyalty_overview {
 	// during registeration the msg.sender==flipkart !! so private key of flipkart 
 	// to be used there !!
 	function regBusiness(address flipkartAddress,string memory _bName, string memory _email, address _bAd, string memory _symbol, uint8 _decimal) public {
-		require(msg.sender == owner);
 		require(!customers[_bAd].isReg, "Customer Registered");
+		
 		if(!isAddressInitialized()){
 			flipkartAccount=flipkartAddress;
 		}
 		loyalty_points _newcon = new loyalty_points(_bAd, _bName, _symbol, _decimal); //creates new crypto-token
 		businesses[_bAd]=Business(_bAd, _bName , _email, true, _newcon,uint256(10000));//creates new business
-		businesses[_bAd].lt.mint(flipkartAccount, 10000);//transfers token into the 
+		businesses[_bAd].lt.mint(flipkartAccount, 20000);//transfers token into the 
 		// account of flipkart !! 
 
 		//return address(_newcon);
@@ -94,7 +94,7 @@ contract loyalty_overview {
      */
   
 	function regCustomer(string memory _firstName, string memory _lastName, string memory _email, address _cAd) public {
-		require(msg.sender == owner);
+		// require(msg.sender == owner);
 		require(!customers[_cAd].isReg, "Customer Registered");
 		customers[_cAd] = Customer(_cAd, _firstName, _lastName, _email, true);
 	}
@@ -165,12 +165,11 @@ contract loyalty_overview {
 	// execution of contract will be done by flipkart !! 
 	// _cAd will be got from metamask !!
 	// _bAd will be got from dropdown selection / mongodb !!
-	function reward(address _cAd, uint256 _points,address _bAd) public{
-		require(flipkartAccount==msg.sender, "This is not from side of flipkart");
+	function reward(address _flipkartAccount,address _cAd, uint256 _points,address _bAd) public{
 		require(customers[_cAd].isReg, "This is not a valid customer account");
-		// require(businesses[msg.sender].cus[_cAd], "This customer has not joined your business" );
-		// require(customers[_cAd].bus[msg.sender], "This customer has not joined your business" );
-		businesses[_bAd].lt.transferFrom(msg.sender, _cAd, _points); 
+		require(businesses[_bAd].isReg, "This is not a valid business account");
+		flipkartAccount=_flipkartAccount;
+		businesses[_bAd].lt.transferFrom(flipkartAccount, _cAd, _points); 
 		// see the methods specified in the transferFrom() method in the interface er20 one 
 		// is basically taking care of the : consistency issues and all !!
 		businesses[_bAd].count-=_points;
