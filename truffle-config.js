@@ -1,12 +1,12 @@
 
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const INFURA_API_KEY = "https://sepolia.infura.io/v3/74105b43c4b34cd2b38fd99a1f315748";
+const INFURA_API_KEY = "https://sepolia.infura.io/v3/ad9cad8dc5564c1cac9f7f6a30d5de04";
 
 const mnemonic = "when various mask cool practice version spot mobile point ball space apology";
 
 module.exports = {
-
+  
    solc: {
     optimizer:{
       enabled: true,
@@ -15,7 +15,8 @@ module.exports = {
    },
 
   networks: {
-    
+   
+
     development: {
       //Ganache
       host: "127.0.0.1",     // Localhost (default: none)

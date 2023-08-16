@@ -152,7 +152,7 @@ contract loyalty_overview {
      */
 	
 	// will be run when a person reedem's some tokens !!! 
-	function spend(address _cAd,uint256 _points,address _bAd){
+	function spend(address _cAd,uint256 _points,address _bAd) public{
 		require(businesses[_bAd].isReg,"Not a registered Business");
 		require(customers[_cAd].isReg,"Not a registered Customer");
 		// just burn these tokens !! from the customer's account !! 
