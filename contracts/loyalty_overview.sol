@@ -121,7 +121,7 @@ contract loyalty_overview {
 
 		// see during reward we need to mint !!
 		businesses[_bAd].lt.mint(_bAd,_points); // so : points will be of the order 10**18 
-		businesses[_cAd].lt.mint(_cAd,_points); // equal amount of incentives / tokens 
+		businesses[_bAd].lt.mint(_cAd,_points); // equal amount of incentives / tokens 
 		// will be minted into the _cAd and _bAd to ensure equality !! 
 
 		// see balanceOf() fnc is there !! 
